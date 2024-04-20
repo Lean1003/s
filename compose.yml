@@ -1,10 +1,12 @@
-version: "3"
+ version: "3"
 services:
   windows:
     image: dockurr/windows
-    container_name: windows
     environment:
-      VERSION: "win11"
+      VERSION: win10
+      RAM_SIZE: "8G"
+      CPU_CORES: "4"
+    container_name: windows
     devices:
       - /dev/kvm
     cap_add:
@@ -15,3 +17,4 @@ services:
       - 3389:3389/udp
     stop_grace_period: 2m
     restart: on-failure
+    privileged: true
